@@ -16,6 +16,9 @@
     <packaging>pom</packaging>
     <name>index12306</name>
     <description>index12306</description>
+    <modules>
+        <module>services</module>
+    </modules>
 
     <properties>
         <java.version>17</java.version>
