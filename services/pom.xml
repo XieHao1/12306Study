@@ -13,6 +13,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>gateway-service</module>
+        <module>order-service</module>
+        <module>pay-service</module>
+        <module>ticker-service</module>
+        <module>user-service</module>
     </modules>
 
     <properties>
