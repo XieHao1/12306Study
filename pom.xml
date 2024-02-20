@@ -18,6 +18,7 @@
     <description>index12306</description>
     <modules>
         <module>services</module>
+        <module>frameworks</module>
     </modules>
 
     <properties>
