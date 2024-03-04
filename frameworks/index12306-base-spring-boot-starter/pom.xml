@@ -5,22 +5,30 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.xh</groupId>
-        <artifactId>index12306</artifactId>
+        <artifactId>frameworks</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>frameworks</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>index12306-convention-spring-boot-starter</module>
-        <module>index12306-base-spring-boot-starter</module>
-        <module>index12306-user-spring-boot-starter</module>
-    </modules>
+    <groupId>org.index12306</groupId>
+    <artifactId>index12306-base-spring-boot-starter</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
 </project>

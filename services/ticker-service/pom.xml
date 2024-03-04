@@ -33,47 +33,47 @@
             <artifactId>fastjson2</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-database-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.opengoofy.index12306</groupId>-->
+        <!--            <artifactId>index12306-database-spring-boot-starter</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-user-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.index12306</groupId>
+            <artifactId>index12306-user-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-web-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.opengoofy.index12306</groupId>-->
+        <!--            <artifactId>index12306-web-spring-boot-starter</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-cache-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.opengoofy.index12306</groupId>-->
+        <!--            <artifactId>index12306-cache-spring-boot-starter</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-convention-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.index12306</groupId>
+            <artifactId>index12306-convention-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-base-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.index12306</groupId>
+            <artifactId>index12306-base-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-log-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.opengoofy.index12306</groupId>-->
+        <!--            <artifactId>index12306-log-spring-boot-starter</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.xuxueli</groupId>
@@ -95,11 +95,11 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-idempotent-spirng-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.opengoofy.index12306</groupId>-->
+        <!--            <artifactId>index12306-idempotent-spirng-boot-starter</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>

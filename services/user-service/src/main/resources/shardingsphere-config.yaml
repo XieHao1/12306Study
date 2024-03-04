@@ -17,14 +17,23 @@ rules:
   - !SHARDING
     tables:
       t_user:
+        # 真实数据节点，比如数据库源以及数据库在数据库中真实存在的
         actualDataNodes: ds_${0..1}.t_user_${0..31}
+        # 分库策略
         databaseStrategy:
+          # 用于单分片键的标准分片场景
           standard:
+            # 分片键
             shardingColumn: username
+            # 分片算法，对应 rules[0].shardingAlgorithms
             shardingAlgorithmName: user_database_hash_mod
+        # 分表策略
         tableStrategy:
+          # 用于单分片键的标准分片场景
           standard:
+            # 分片键
             shardingColumn: username
+            # 分片算法，对应 rules[0].shardingAlgorithms
             shardingAlgorithmName: user_table_hash_mod
       t_passenger:
         actualDataNodes: ds_${0..1}.t_passenger_${0..31}
@@ -56,12 +65,19 @@ rules:
           standard:
             shardingColumn: phone
             shardingAlgorithmName: t_user_phone_table_hash_mod
+      # 分片算法
     shardingAlgorithms:
+      # 数据库分片算法
       user_database_hash_mod:
+        # 这个分片算法是基于一个类（class）实现的
         type: CLASS_BASED
+        # 分片数量
         props:
+          #分片数量（sharding-count）：32，这表示数据库将被分成32个片段
           sharding-count: 32
+          #表分片数量（table-sharding-count）：16，这表示每个数据库分片将被进一步分成16个子表。
           table-sharding-count: 16
+          #分片策略（strategy）：standard，表示使用标准的分片策略。
           strategy: standard
           algorithmClassName: org.opengoofy.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
       passenger_database_hash_mod:

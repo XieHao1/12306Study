@@ -51,17 +51,17 @@
 <!--            <version>${project.version}</version>-->
 <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-convention-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.index12306</groupId>
+            <artifactId>index12306-convention-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-base-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.index12306</groupId>
+            <artifactId>index12306-base-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
 <!--        <dependency>-->
 <!--            <groupId>org.opengoofy.index12306</groupId>-->
@@ -69,11 +69,11 @@
 <!--            <version>${project.version}</version>-->
 <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.opengoofy.index12306</groupId>-->
-<!--            <artifactId>index12306-user-spring-boot-starter</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.index12306</groupId>
+            <artifactId>index12306-user-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
