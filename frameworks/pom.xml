@@ -15,6 +15,14 @@
         <module>index12306-convention-spring-boot-starter</module>
         <module>index12306-base-spring-boot-starter</module>
         <module>index12306-user-spring-boot-starter</module>
+        <module>index12306-designpattern-spring-boot-starter</module>
+        <module>index12306-common-spring-boot-starter</module>
+        <module>index12306-database-spring-boot-starter</module>
+        <module>index12306-distributedid-spring-boot-starter</module>
+        <module>index12306-log-spring-boot-starter</module>
+        <module>index12306-idempotent-spring-boot-starter</module>
+        <module>index12306-cache-spring-boot-starter</module>
+        <module>index12306-web-spring-boot-starter</module>
     </modules>
 
     <properties>

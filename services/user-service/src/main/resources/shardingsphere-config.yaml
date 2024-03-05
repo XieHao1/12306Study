@@ -79,28 +79,28 @@ rules:
           table-sharding-count: 16
           #分片策略（strategy）：standard，表示使用标准的分片策略。
           strategy: standard
-          algorithmClassName: org.opengoofy.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
+          algorithmClassName: org.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
       passenger_database_hash_mod:
         type: CLASS_BASED
         props:
           sharding-count: 32
           table-sharding-count: 16
           strategy: standard
-          algorithmClassName: org.opengoofy.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
+          algorithmClassName: org.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
       t_user_mail_database_hash_mod:
         type: CLASS_BASED
         props:
           sharding-count: 32
           table-sharding-count: 16
           strategy: standard
-          algorithmClassName: org.opengoofy.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
+          algorithmClassName: org.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
       t_user_phone_database_hash_mod:
         type: CLASS_BASED
         props:
           sharding-count: 32
           table-sharding-count: 16
           strategy: standard
-          algorithmClassName: org.opengoofy.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
+          algorithmClassName: org.index12306.framework.starter.database.algorithm.sharding.CustomDbHashModShardingAlgorithm
       passenger_table_hash_mod:
         type: HASH_MOD
         props:
