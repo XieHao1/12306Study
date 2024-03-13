@@ -15,51 +15,32 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
+package org.index12306.config;
 
 import lombok.Data;
-import lombok.experimental.Accessors;
-
-import java.io.Serial;
-import java.io.Serializable;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * 全局返回对象
+ * 用户注册布隆过滤器属性配置
  */
 @Data
-@Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
+@ConfigurationProperties(prefix = UserRegisterBloomFilterProperties.PREFIX)
+public final class UserRegisterBloomFilterProperties {
 
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
+    public static final String PREFIX = "framework.cache.redis.bloom-filter.user-register";
 
     /**
-     * 正确返回码
+     * 用户注册布隆过滤器实例名称
      */
-    public static final String SUCCESS_CODE = "0";
+    private String name = "user_register_cache_penetration_bloom_filter";
 
     /**
-     * 返回码
+     * 每个元素的预期插入量
      */
-    private String code;
+    private Long expectedInsertions = 64000L;
 
     /**
-     * 返回消息
+     * 预期错误概率
      */
-    private String message;
-
-    /**
-     * 响应数据
-     */
-    private T data;
-
-    /**
-     * 请求ID
-     */
-    private String requestId;
-
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    private Double falseProbability = 0.03D;
 }

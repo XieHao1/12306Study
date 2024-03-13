@@ -15,20 +15,14 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.mapper;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.index12306.entity.UserDeletionDO;
 
 /**
- * 用户服务应用启动器
+ * 用户注销表持久层
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-public class UserServiceApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
-    }
+public interface UserDeletionMapper extends BaseMapper<UserDeletionDO> {
 }

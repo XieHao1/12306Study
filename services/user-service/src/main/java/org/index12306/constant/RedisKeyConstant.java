@@ -15,51 +15,30 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
-
-import lombok.Data;
-import lombok.experimental.Accessors;
-
-import java.io.Serial;
-import java.io.Serializable;
+package org.index12306.constant;
 
 /**
- * 全局返回对象
+ * Redis Key 定义常量类
  */
-@Data
-@Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
+public final class RedisKeyConstant {
 
     /**
-     * 正确返回码
+     * 用户注册锁，Key Prefix + 用户名
      */
-    public static final String SUCCESS_CODE = "0";
+    public static final String LOCK_USER_REGISTER = "index12306-user-service:lock:user-register:";
 
     /**
-     * 返回码
+     * 用户注销锁，Key Prefix + 用户名
      */
-    private String code;
+    public static final String USER_DELETION = "index12306-user-service:user-deletion:";
 
     /**
-     * 返回消息
+     * 用户注册可复用用户名分片，Key Prefix + Idx
      */
-    private String message;
+    public static final String USER_REGISTER_REUSE_SHARDING = "index12306-user-service:user-reuse:";
 
     /**
-     * 响应数据
+     * 用户乘车人列表，Key Prefix + 用户名
      */
-    private T data;
-
-    /**
-     * 请求ID
-     */
-    private String requestId;
-
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    public static final String USER_PASSENGER_LIST = "index12306-user-service:user-passenger-list:";
 }

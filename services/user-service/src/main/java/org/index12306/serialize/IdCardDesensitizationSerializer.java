@@ -15,20 +15,23 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.serialize;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import cn.hutool.core.util.DesensitizedUtil;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import java.io.IOException;
 
 /**
- * 用户服务应用启动器
+ * 身份证号脱敏反序列化
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-public class UserServiceApplication {
+public class IdCardDesensitizationSerializer extends JsonSerializer<String> {
 
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+    @Override
+    public void serialize(String idCard, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        String idCardDesensitization = DesensitizedUtil.idCardNum(idCard, 4, 4);
+        jsonGenerator.writeString(idCardDesensitization);
     }
 }

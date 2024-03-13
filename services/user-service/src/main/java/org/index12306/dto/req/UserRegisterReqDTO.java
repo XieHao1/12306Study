@@ -15,51 +15,78 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
+package org.index12306.dto.req;
 
 import lombok.Data;
-import lombok.experimental.Accessors;
-
-import java.io.Serial;
-import java.io.Serializable;
 
 /**
- * 全局返回对象
+ * 用户注册请求参数
  */
 @Data
-@Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
+public class UserRegisterReqDTO {
 
     /**
-     * 正确返回码
+     * 用户名
      */
-    public static final String SUCCESS_CODE = "0";
+    private String username;
 
     /**
-     * 返回码
+     * 密码
      */
-    private String code;
+    private String password;
 
     /**
-     * 返回消息
+     * 真实姓名
      */
-    private String message;
+    private String realName;
 
     /**
-     * 响应数据
+     * 证件类型
      */
-    private T data;
+    private Integer idType;
 
     /**
-     * 请求ID
+     * 证件号
      */
-    private String requestId;
+    private String idCard;
 
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 邮箱
+     */
+    private String mail;
+
+    /**
+     * 旅客类型
+     */
+    private Integer userType;
+
+    /**
+     * 审核状态
+     */
+    private Integer verifyState;
+
+    /**
+     * 邮编
+     */
+    private String postCode;
+
+    /**
+     * 地址
+     */
+    private String address;
+
+    /**
+     * 国家/地区
+     */
+    private String region;
+
+    /**
+     * 固定电话
+     */
+    private String telephone;
 }

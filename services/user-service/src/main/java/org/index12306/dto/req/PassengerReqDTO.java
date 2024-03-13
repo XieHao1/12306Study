@@ -15,51 +15,43 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
+package org.index12306.dto.req;
 
 import lombok.Data;
-import lombok.experimental.Accessors;
-
-import java.io.Serial;
-import java.io.Serializable;
 
 /**
- * 全局返回对象
+ * 乘车人添加&修改请求参数
  */
 @Data
-@Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
+public class PassengerReqDTO {
 
     /**
-     * 正确返回码
+     * 乘车人id
      */
-    public static final String SUCCESS_CODE = "0";
+    private String id;
 
     /**
-     * 返回码
+     * 真实姓名
      */
-    private String code;
+    private String realName;
 
     /**
-     * 返回消息
+     * 证件类型
      */
-    private String message;
+    private Integer idType;
 
     /**
-     * 响应数据
+     * 证件号码
      */
-    private T data;
+    private String idCard;
 
     /**
-     * 请求ID
+     * 优惠类型
      */
-    private String requestId;
+    private Integer discountType;
 
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    /**
+     * 手机号
+     */
+    private String phone;
 }

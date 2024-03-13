@@ -17,13 +17,14 @@
   -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.opengoofy.index12306.biz.userservice.dao.mapper.UserMapper">
+<mapper namespace="org.index12306.mapper.UserMapper">
 
     <!-- 注销用户 -->
-    <update id="deletionUser" parameterType="org.opengoofy.index12306.biz.userservice.dao.entity.UserDO">
+    <update id="deletionUser" parameterType="org.index12306.entity.UserDO">
         update t_user
         set deletion_time = #{deletionTime},
             del_flag      = '1'
-        where username = #{username} and del_flag = '0'
+        where username = #{username}
+          and del_flag = '0'
     </update>
 </mapper>

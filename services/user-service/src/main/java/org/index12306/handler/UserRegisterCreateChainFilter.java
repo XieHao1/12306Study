@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.handler;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.index12306.dto.req.UserRegisterReqDTO;
+import org.index12306.enums.UserChainMarkEnum;
+import org.index12306.framework.starter.designpattern.chain.AbstractChainHandler;
 
 /**
- * 用户服务应用启动器
+ * 用户注册责任链过滤器
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-public class UserServiceApplication {
+public interface UserRegisterCreateChainFilter<T extends UserRegisterReqDTO> extends AbstractChainHandler<UserRegisterReqDTO> {
 
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+    @Override
+    default String mark() {
+        return UserChainMarkEnum.USER_REGISTER_FILTER.name();
     }
 }

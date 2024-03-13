@@ -15,51 +15,35 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
+package org.index12306.toolkit;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.Accessors;
-
-import java.io.Serial;
-import java.io.Serializable;
+import lombok.NoArgsConstructor;
 
 /**
- * 全局返回对象
+ * 用户信息实体
+ *
  */
 @Data
-@Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class UserInfoDTO {
 
     /**
-     * 正确返回码
+     * 用户 ID
      */
-    public static final String SUCCESS_CODE = "0";
+    private String userId;
 
     /**
-     * 返回码
+     * 用户名
      */
-    private String code;
+    private String username;
 
     /**
-     * 返回消息
+     * 真实姓名
      */
-    private String message;
-
-    /**
-     * 响应数据
-     */
-    private T data;
-
-    /**
-     * 请求ID
-     */
-    private String requestId;
-
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    private String realName;
 }

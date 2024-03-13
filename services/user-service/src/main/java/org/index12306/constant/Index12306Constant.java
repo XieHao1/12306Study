@@ -15,20 +15,15 @@
  * limitations under the License.
  */
 
-package org.index12306;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package org.index12306.constant;
 
 /**
- * 用户服务应用启动器
+ * 系统级公共常量
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-public class UserServiceApplication {
+public final class Index12306Constant {
 
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
-    }
+    /**
+     * 用户注册可复用用户名分片数
+     */
+    public static final int USER_REGISTER_REUSE_SHARDING_COUNT = 1024;
 }

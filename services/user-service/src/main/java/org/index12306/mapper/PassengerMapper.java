@@ -15,20 +15,14 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.mapper;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.index12306.entity.PassengerDO;
 
 /**
- * 用户服务应用启动器
+ * 乘车人持久层
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-public class UserServiceApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
-    }
+public interface PassengerMapper extends BaseMapper<PassengerDO> {
 }

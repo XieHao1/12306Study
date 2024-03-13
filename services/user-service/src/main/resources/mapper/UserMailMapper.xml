@@ -17,10 +17,10 @@
   -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.opengoofy.index12306.biz.userservice.dao.mapper.UserMailMapper">
+<mapper namespace="org.index12306.mapper.UserMailMapper">
 
     <!-- 注销用户 -->
-    <update id="deletionUser" parameterType="org.opengoofy.index12306.biz.userservice.dao.entity.UserMailDO">
+    <update id="deletionUser" parameterType="org.index12306.entity.UserMailDO">
         update t_user_mail
         set deletion_time = #{deletionTime},
             del_flag      = '1'

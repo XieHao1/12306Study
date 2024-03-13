@@ -15,51 +15,69 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
+package org.index12306.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
+import org.index12306.framework.starter.database.base.BaseDO;
 
-import java.io.Serial;
-import java.io.Serializable;
+import java.util.Date;
 
 /**
- * 全局返回对象
+ * 乘车人实体
  */
 @Data
-@Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
-
-    /**
-     * 正确返回码
-     */
-    public static final String SUCCESS_CODE = "0";
+@TableName("t_passenger")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class PassengerDO extends BaseDO {
 
     /**
-     * 返回码
+     * id
      */
-    private String code;
+    private Long id;
 
     /**
-     * 返回消息
+     * 用户名
      */
-    private String message;
+    private String username;
 
     /**
-     * 响应数据
+     * 真实姓名
      */
-    private T data;
+    private String realName;
 
     /**
-     * 请求ID
+     * 证件类型
      */
-    private String requestId;
+    private Integer idType;
 
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    /**
+     * 证件号码
+     */
+    private String idCard;
+
+    /**
+     * 优惠类型
+     */
+    private Integer discountType;
+
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 添加日期
+     */
+    private Date createDate;
+
+    /**
+     * 审核状态
+     */
+    private Integer verifyStatus;
 }

@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.toolkit;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.index12306.constant.Index12306Constant;
 
 /**
- * 用户服务应用启动器
+ * 用户名可复用工具类
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-public class UserServiceApplication {
+public final class UserReuseUtil {
 
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+    /**
+     * 计算分片位置
+     */
+    public static int hashShardingIdx(String username) {
+        return Math.abs(username.hashCode() % Index12306Constant.USER_REGISTER_REUSE_SHARDING_COUNT);
     }
 }

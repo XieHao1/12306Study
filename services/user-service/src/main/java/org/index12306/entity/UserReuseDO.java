@@ -15,51 +15,26 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
+package org.index12306.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
+import org.index12306.framework.starter.database.base.BaseDO;
 
 /**
- * 全局返回对象
+ * 用户名复用表实体
  */
 @Data
-@Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
+@NoArgsConstructor
+@AllArgsConstructor
+@TableName("t_user_reuse")
+public final class UserReuseDO extends BaseDO {
 
     /**
-     * 正确返回码
+     * 用户名
      */
-    public static final String SUCCESS_CODE = "0";
-
-    /**
-     * 返回码
-     */
-    private String code;
-
-    /**
-     * 返回消息
-     */
-    private String message;
-
-    /**
-     * 响应数据
-     */
-    private T data;
-
-    /**
-     * 请求ID
-     */
-    private String requestId;
-
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    private String username;
 }

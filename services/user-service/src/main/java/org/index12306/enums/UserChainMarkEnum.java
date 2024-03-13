@@ -15,20 +15,15 @@
  * limitations under the License.
  */
 
-package org.index12306;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package org.index12306.enums;
 
 /**
- * 用户服务应用启动器
+ * 用户相关责任链 Mark 枚举
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-public class UserServiceApplication {
+public enum UserChainMarkEnum {
 
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
-    }
+    /**
+     * 用户注册过滤器
+     */
+    USER_REGISTER_FILTER
 }

@@ -15,51 +15,64 @@
  * limitations under the License.
  */
 
-package org.index12306.framework.starter.convention.result;
+package org.index12306.dto.resp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.io.Serial;
-import java.io.Serializable;
+import java.util.Date;
 
 /**
- * 全局返回对象
+ * 乘车人真实返回参数，不包含脱敏信息
  */
 @Data
 @Accessors(chain = true)
-//当该值为 true 时，对应字段的 setter方法调用后，会返回当前对象。
-public class Result<T> implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 5679018624309023727L;
+public class PassengerActualRespDTO {
 
     /**
-     * 正确返回码
+     * 乘车人id
      */
-    public static final String SUCCESS_CODE = "0";
+    private String id;
 
     /**
-     * 返回码
+     * 用户名
      */
-    private String code;
+    private String username;
 
     /**
-     * 返回消息
+     * 真实姓名
      */
-    private String message;
+    private String realName;
 
     /**
-     * 响应数据
+     * 证件类型
      */
-    private T data;
+    private Integer idType;
 
     /**
-     * 请求ID
+     * 证件号码
      */
-    private String requestId;
+    private String idCard;
 
-    public boolean isSuccess() {
-        return SUCCESS_CODE.equals(code);
-    }
+    /**
+     * 优惠类型
+     */
+    private Integer discountType;
+
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 添加日期
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date createDate;
+
+    /**
+     * 审核状态
+     */
+    private Integer verifyStatus;
 }
