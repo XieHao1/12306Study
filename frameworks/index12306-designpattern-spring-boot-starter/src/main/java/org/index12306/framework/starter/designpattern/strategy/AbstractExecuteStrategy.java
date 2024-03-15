@@ -20,6 +20,8 @@ package org.index12306.framework.starter.designpattern.strategy;
 /**
  * 策略执行抽象
  *
+ * @param <REQUEST>  请求
+ * @param <RESPONSE> 响应
  */
 public interface AbstractExecuteStrategy<REQUEST, RESPONSE> {
 

@@ -38,6 +38,7 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/user-service")
 public class PassengerController {
 
     private final PassengerService passengerService;
@@ -45,7 +46,7 @@ public class PassengerController {
     /**
      * 根据用户名查询乘车人列表
      */
-    @GetMapping("/api/user-service/passenger/query")
+    @GetMapping("/passenger/query")
     public Result<List<PassengerRespDTO>> listPassengerQueryByUsername() {
         return Results.success(passengerService.listPassengerQueryByUsername(UserContext.getUsername()));
     }
@@ -53,7 +54,7 @@ public class PassengerController {
     /**
      * 根据乘车人 ID 集合查询乘车人列表
      */
-    @GetMapping("/api/user-service/inner/passenger/actual/query/ids")
+    @GetMapping("/inner/passenger/actual/query/ids")
     public Result<List<PassengerActualRespDTO>> listPassengerQueryByIds(@RequestParam("username") String username, @RequestParam("ids") List<Long> ids) {
         return Results.success(passengerService.listPassengerQueryByIds(username, ids));
     }
@@ -68,7 +69,7 @@ public class PassengerController {
             scene = IdempotentSceneEnum.RESTAPI,
             message = "正在新增乘车人，请稍后再试..."
     )
-    @PostMapping("/api/user-service/passenger/save")
+    @PostMapping("/passenger/save")
     public Result<Void> savePassenger(@RequestBody PassengerReqDTO requestParam) {
         passengerService.savePassenger(requestParam);
         return Results.success();

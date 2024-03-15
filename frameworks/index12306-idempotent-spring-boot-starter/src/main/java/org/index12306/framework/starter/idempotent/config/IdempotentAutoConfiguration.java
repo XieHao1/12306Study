@@ -24,7 +24,7 @@ import org.index12306.framework.starter.idempotent.core.param.IdempotentParamSer
 import org.index12306.framework.starter.idempotent.core.spel.IdempotentSpELByMQExecuteHandler;
 import org.index12306.framework.starter.idempotent.core.spel.IdempotentSpELByRestAPIExecuteHandler;
 import org.index12306.framework.starter.idempotent.core.spel.IdempotentSpELService;
-import org.index12306.framework.starter.idempotent.core.token.IdempotentTokenController;
+//import org.index12306.framework.starter.idempotent.core.token.IdempotentTokenController;
 import org.index12306.framework.starter.idempotent.core.token.IdempotentTokenExecuteHandler;
 import org.index12306.framework.starter.idempotent.core.token.IdempotentTokenService;
 import org.redisson.api.RedissonClient;
@@ -68,10 +68,10 @@ public class IdempotentAutoConfiguration {
     /**
      * 申请幂等 Token 控制器，基于 RestAPI 场景
      */
-    @Bean
-    public IdempotentTokenController idempotentTokenController(IdempotentTokenService idempotentTokenService) {
-        return new IdempotentTokenController(idempotentTokenService);
-    }
+//    @Bean
+//    public IdempotentTokenController idempotentTokenController(IdempotentTokenService idempotentTokenService) {
+//        return new IdempotentTokenController(idempotentTokenService);
+//    }
 
     /**
      * SpEL 方式幂等实现，基于 RestAPI 场景

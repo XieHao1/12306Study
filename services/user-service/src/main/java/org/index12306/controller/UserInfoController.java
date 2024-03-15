@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/user-service")
 public class UserInfoController {
 
     private final UserLoginService userLoginService;
@@ -46,7 +47,7 @@ public class UserInfoController {
     /**
      * 根据用户名查询用户信息
      */
-    @GetMapping("/api/user-service/query")
+    @GetMapping("/query")
     public Result<UserQueryRespDTO> queryUserByUsername(@RequestParam("username") @NotEmpty String username) {
         return Results.success(userService.queryUserByUsername(username));
     }
@@ -54,7 +55,7 @@ public class UserInfoController {
     /**
      * 根据用户名查询用户无脱敏信息
      */
-    @GetMapping("/api/user-service/actual/query")
+    @GetMapping("/actual/query")
     public Result<UserQueryActualRespDTO> queryActualUserByUsername(@RequestParam("username") @NotEmpty String username) {
         return Results.success(userService.queryActualUserByUsername(username));
     }
@@ -62,7 +63,7 @@ public class UserInfoController {
     /**
      * 检查用户名是否已存在
      */
-    @GetMapping("/api/user-service/has-username")
+    @GetMapping("/has-username")
     public Result<Boolean> hasUsername(@RequestParam("username") @NotEmpty String username) {
         return Results.success(userLoginService.hasUsername(username));
     }
@@ -70,7 +71,7 @@ public class UserInfoController {
     /**
      * 注册用户
      */
-    @PostMapping("/api/user-service/register")
+    @PostMapping("/register")
     public Result<UserRegisterRespDTO> register(@RequestBody @Valid UserRegisterReqDTO requestParam) {
         return Results.success(userLoginService.register(requestParam));
     }
@@ -78,7 +79,7 @@ public class UserInfoController {
     /**
      * 修改用户
      */
-    @PostMapping("/api/user-service/update")
+    @PostMapping("/update")
     public Result<Void> update(@RequestBody @Valid UserUpdateReqDTO requestParam) {
         userService.update(requestParam);
         return Results.success();
@@ -87,7 +88,7 @@ public class UserInfoController {
     /**
      * 注销用户
      */
-    @PostMapping("/api/user-service/deletion")
+    @PostMapping("/deletion")
     public Result<Void> deletion(@RequestBody @Valid UserDeletionReqDTO requestParam) {
         userLoginService.deletion(requestParam);
         return Results.success();
