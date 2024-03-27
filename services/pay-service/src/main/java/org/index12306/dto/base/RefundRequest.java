@@ -15,25 +15,25 @@
  * limitations under the License.
  */
 
-package org.index12306;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+package org.index12306.dto.base;
 
 /**
- * 支付服务应用启动器
- *
+ * 退款入参接口
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+public interface RefundRequest {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 获取阿里退款入参
+     */
+    AliRefundRequest getAliRefundRequest();
+
+    /**
+     * 获取订单号
+     */
+    String getOrderSn();
+
+    /**
+     * 构建查找支付策略实现类标识
+     */
+    String buildMark();
 }

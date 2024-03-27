@@ -15,25 +15,33 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.enums;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
- * 支付服务应用启动器
- *
+ * 退款类型枚举
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Getter
+@RequiredArgsConstructor
+public enum RefundTypeEnum {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 部分退款
+     */
+    PARTIAL_REFUND(11, 0, "PARTIAL_REFUND", "部分退款"),
+
+    /**
+     * 全部退款
+     */
+    FULL_REFUND(12, 1, "FULL_REFUND", "全部退款");
+
+    private final Integer code;
+
+    private final Integer type;
+
+    private final String name;
+
+    private final String value;
 }

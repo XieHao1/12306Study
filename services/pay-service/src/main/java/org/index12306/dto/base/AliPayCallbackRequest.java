@@ -15,25 +15,51 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.dto.base;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Data;
+import org.index12306.enums.PayChannelEnum;
+
+import java.util.Date;
 
 /**
- * 支付服务应用启动器
- *
+ * 支付宝回调请求入参
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+public final class AliPayCallbackRequest extends AbstractPayCallbackRequest {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
+    /**
+     * 支付渠道
+     */
+    private String channel;
+
+    /**
+     * 支付状态
+     */
+    private String tradeStatus;
+
+    /**
+     * 支付凭证号
+     */
+    private String tradeNo;
+
+    /**
+     * 买家付款时间
+     */
+    private Date gmtPayment;
+
+    /**
+     * 买家付款金额
+     */
+    private Integer buyerPayAmount;
+
+    @Override
+    public AliPayCallbackRequest getAliPayCallBackRequest() {
+        return this;
+    }
+
+    @Override
+    public String buildMark() {
+        return PayChannelEnum.ALI_PAY.getName();
     }
 }

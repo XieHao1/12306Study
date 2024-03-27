@@ -15,25 +15,47 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.mq.event;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.index12306.dto.req.TicketOrderItemCreateReqDTO;
+
+import java.util.List;
 
 /**
- * 支付服务应用启动器
- *
+ * 延迟关闭订单事件
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class DelayCloseOrderEvent {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 车次 ID
+     */
+    private String trainId;
+
+    /**
+     * 出发站点
+     */
+    private String departure;
+
+    /**
+     * 到达站点
+     */
+    private String arrival;
+
+    /**
+     * 订单号
+     */
+    private String orderSn;
+
+    /**
+     * 乘车人购票信息
+     */
+    private List<TicketOrderItemCreateReqDTO> trainPurchaseTicketResults;
 }

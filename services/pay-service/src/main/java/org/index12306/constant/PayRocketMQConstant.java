@@ -15,25 +15,25 @@
  * limitations under the License.
  */
 
-package org.index12306;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+package org.index12306.constant;
 
 /**
- * 支付服务应用启动器
- *
+ * RocketMQ 支付服务常量类
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+public final class PayRocketMQConstant {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 支付服务相关业务 Topic Key
+     */
+    public static final String PAY_GLOBAL_TOPIC_KEY = "index12306_pay-service_topic${unique-name:}";
+
+    /**
+     * 支付结果回调订单 Tag Key
+     */
+    public static final String PAY_RESULT_CALLBACK_TAG_KEY = "index12306_pay-service_pay-result-callback_tag${unique-name:}";
+
+    /**
+     * 退款结果回调订单 Tag Key
+     */
+    public static final String REFUND_RESULT_CALLBACK_TAG_KEY = "index12306_pay-service_refund-result-callback_tag${unique-name:}";
 }

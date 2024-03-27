@@ -15,25 +15,34 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.dto;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Data;
+import org.index12306.dto.base.AbstractPayRequest;
+
+import java.math.BigDecimal;
 
 /**
- * 支付服务应用启动器
+ * 支付请求命令
  *
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+public final class PayCommand extends AbstractPayRequest {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 子订单号
+     */
+    private String outOrderSn;
+
+    /**
+     * 订单总金额
+     * 单位为元，精确到小数点后两位，取值范围：[0.01,100000000]
+     */
+    private BigDecimal totalAmount;
+
+    /**
+     * 订单标题
+     * 注意：不可使用特殊字符，如 /，=，& 等
+     */
+    private String subject;
 }

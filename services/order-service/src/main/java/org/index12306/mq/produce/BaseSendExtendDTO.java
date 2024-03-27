@@ -15,25 +15,49 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.mq.produce;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * 支付服务应用启动器
- *
+ * 消息发送事件基础扩充属性实体
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public final class BaseSendExtendDTO {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 事件名称
+     */
+    private String eventName;
+
+    /**
+     * 主题
+     */
+    private String topic;
+
+    /**
+     * 标签
+     */
+    private String tag;
+
+    /**
+     * 业务标识
+     */
+    private String keys;
+
+    /**
+     * 发送消息超时时间
+     */
+    private Long sentTimeout;
+
+    /**
+     * 延迟消息
+     */
+    private Integer delayLevel;
 }

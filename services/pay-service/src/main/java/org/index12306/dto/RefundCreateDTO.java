@@ -15,25 +15,36 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.dto;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Data;
+import org.index12306.remote.dto.TicketOrderPassengerDetailRespDTO;
+
+import java.util.List;
 
 /**
- * 支付服务应用启动器
- *
+ * 退款创建入参数实体
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+public class RefundCreateDTO {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 支付流水号
+     */
+    private String paySn;
+
+    /**
+     * 订单号
+     */
+    private String orderSn;
+
+    /**
+     * 退款类型
+     */
+    private Integer type;
+
+    /**
+     * 部分退款车票详情集合
+     */
+    private List<TicketOrderPassengerDetailRespDTO> refundDetailReqDTOList;
 }

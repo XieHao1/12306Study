@@ -15,25 +15,28 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.enums;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
- * 支付服务应用启动器
- *
+ * 支付渠道枚举
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@RequiredArgsConstructor
+public enum PayChannelEnum {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 支付宝
+     */
+    ALI_PAY(0, "ALI_PAY", "支付宝");
+
+    @Getter
+    private final Integer code;
+
+    @Getter
+    private final String name;
+
+    @Getter
+    private final String value;
 }

@@ -15,25 +15,52 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.enums;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import cn.crane4j.annotation.ContainerEnum;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
- * 支付服务应用启动器
- *
+ * 订单明细状态枚举
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@ContainerEnum(namespace = "OrderItemStatusEnum", key = "status", value = "statusName")
+@RequiredArgsConstructor
+public enum OrderItemStatusEnum {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 待支付
+     */
+    PENDING_PAYMENT(0, "待支付"),
+
+    /**
+     * 已支付
+     */
+    ALREADY_PAID(10, "已支付"),
+
+    /**
+     * 已进站
+     */
+    ALREADY_PULL_IN(20, "已进站"),
+
+    /**
+     * 已取消
+     */
+    CLOSED(30, "已取消"),
+
+    /**
+     * 已退票
+     */
+    REFUNDED(40, "已退票"),
+
+    /**
+     * 已改签
+     */
+    RESCHEDULED(50, "已改签");
+
+    @Getter
+    private final Integer status;
+
+    @Getter
+    private final String statusName;
 }

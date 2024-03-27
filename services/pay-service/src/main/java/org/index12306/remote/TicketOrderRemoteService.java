@@ -15,25 +15,26 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.remote;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import org.index12306.framework.starter.convention.result.Result;
+import org.index12306.remote.dto.TicketOrderDetailRespDTO;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * 支付服务应用启动器
- *
+ * 车票订单远程服务调用
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@FeignClient(value = "index12306-order${unique-name:}-service", url = "${aggregation.remote-url:}")
+public interface TicketOrderRemoteService {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 跟据订单号查询车票订单
+     *
+     * @param orderSn 列车订单号
+     * @return 列车订单记录
+     */
+    @GetMapping("/api/order-service/order/ticket/query")
+    Result<TicketOrderDetailRespDTO> queryTicketOrderByOrderSn(@RequestParam(value = "orderSn") String orderSn);
 }

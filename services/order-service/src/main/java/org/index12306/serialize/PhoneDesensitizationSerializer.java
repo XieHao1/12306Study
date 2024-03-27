@@ -15,25 +15,23 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.serialize;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import cn.hutool.core.util.DesensitizedUtil;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import java.io.IOException;
 
 /**
- * 支付服务应用启动器
- *
+ * 手机号脱敏反序列化
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+public class PhoneDesensitizationSerializer extends JsonSerializer<String> {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
+    @Override
+    public void serialize(String phone, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        String phoneDesensitization = DesensitizedUtil.mobilePhone(phone);
+        jsonGenerator.writeString(phoneDesensitization);
     }
 }

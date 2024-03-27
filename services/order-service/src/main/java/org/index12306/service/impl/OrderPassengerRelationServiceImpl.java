@@ -15,25 +15,17 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.service.impl;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.index12306.entity.OrderItemPassengerDO;
+import org.index12306.mapper.OrderItemPassengerMapper;
+import org.index12306.service.OrderPassengerRelationService;
+import org.springframework.stereotype.Service;
 
 /**
- * 支付服务应用启动器
- *
+ * 乘车人订单关系接口层实现
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+@Service
+public class OrderPassengerRelationServiceImpl extends ServiceImpl<OrderItemPassengerMapper, OrderItemPassengerDO> implements OrderPassengerRelationService {
 }

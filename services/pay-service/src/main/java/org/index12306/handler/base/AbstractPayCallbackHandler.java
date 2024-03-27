@@ -15,25 +15,19 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.handler.base;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import org.index12306.dto.base.PayCallbackRequest;
 
 /**
- * 支付服务应用启动器
- *
+ * 抽象支付回调组件
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+public abstract class AbstractPayCallbackHandler {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 支付回调抽象接口
+     *
+     * @param payCallbackRequest 支付回调请求参数
+     */
+    public abstract void callback(PayCallbackRequest payCallbackRequest);
 }

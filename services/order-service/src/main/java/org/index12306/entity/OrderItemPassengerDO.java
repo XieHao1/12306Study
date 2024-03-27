@@ -15,25 +15,42 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.entity;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.index12306.framework.starter.database.base.BaseDO;
 
 /**
- * 支付服务应用启动器
- *
+ * 乘车人订单关系实体
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@TableName("t_order_item_passenger")
+public class OrderItemPassengerDO extends BaseDO {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * id
+     */
+    private Long id;
+
+    /**
+     * 订单号
+     */
+    private String orderSn;
+
+    /**
+     * 证件类型
+     */
+    private Integer idType;
+
+    /**
+     * 证件号
+     */
+    private String idCard;
 }

@@ -15,25 +15,18 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.dto.req;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Data;
 
 /**
- * 支付服务应用启动器
- *
+ * 取消车票订单请求入参
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+public class CancelTicketOrderReqDTO {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 订单号
+     */
+    private String orderSn;
 }

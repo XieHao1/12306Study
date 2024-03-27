@@ -15,25 +15,26 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.dto;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Data;
+import org.index12306.dto.base.AbstractRefundRequest;
+
+import java.math.BigDecimal;
 
 /**
- * 支付服务应用启动器
- *
+ * 退款请求命令
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+public final class RefundCommand extends AbstractRefundRequest {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 支付金额
+     */
+    private BigDecimal payAmount;
+
+    /**
+     * 交易凭证号
+     */
+    private String tradeNo;
 }

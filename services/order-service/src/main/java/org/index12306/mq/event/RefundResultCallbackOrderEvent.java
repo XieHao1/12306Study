@@ -15,25 +15,36 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.mq.event;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.index12306.dto.resp.TicketOrderPassengerDetailRespDTO;
+import org.index12306.enums.RefundTypeEnum;
+
+import java.util.List;
 
 /**
- * 支付服务应用启动器
- *
+ * 退款结果回调订单服务事件
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public final class RefundResultCallbackOrderEvent {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 订单号
+     */
+    private String orderSn;
+
+    /**
+     * 退款类型枚举
+     */
+    private RefundTypeEnum refundTypeEnum;
+
+    /**
+     * 部分退款车票详情
+     */
+    private List<TicketOrderPassengerDetailRespDTO> partialRefundTicketDetailList;
 }

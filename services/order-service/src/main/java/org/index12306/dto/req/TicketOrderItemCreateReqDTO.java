@@ -15,25 +15,64 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.dto.req;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Data;
 
 /**
- * 支付服务应用启动器
+ * 车票订单详情创建请求参数
  *
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+public class TicketOrderItemCreateReqDTO {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 车厢号
+     */
+    private String carriageNumber;
+
+    /**
+     * 座位类型
+     */
+    private Integer seatType;
+
+    /**
+     * 座位号
+     */
+    private String seatNumber;
+
+    /**
+     * 乘车人 ID
+     */
+    private String passengerId;
+
+    /**
+     * 真实姓名
+     */
+    private String realName;
+
+    /**
+     * 证件类型
+     */
+    private Integer idType;
+
+    /**
+     * 证件号
+     */
+    private String idCard;
+
+    /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
+     * 订单金额
+     */
+    private Integer amount;
+
+    /**
+     * 车票类型
+     */
+    private Integer ticketType;
 }

@@ -15,25 +15,35 @@
  * limitations under the License.
  */
 
-package org.index12306;
+package org.index12306.dto;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.retry.annotation.EnableRetry;
+import lombok.Data;
+
+import java.util.Date;
 
 /**
- * 支付服务应用启动器
- *
+ * 支付单详情信息返回参数
  */
-@SpringBootApplication
-@MapperScan("org.index12306.mapper")
-@EnableFeignClients("org.index12306.remote")
-@EnableRetry
-public class PayServiceApplication {
+@Data
+public class PayInfoRespDTO {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PayServiceApplication.class, args);
-    }
+    /**
+     * 订单号
+     */
+    private String orderSn;
+
+    /**
+     * 支付总金额
+     */
+    private Integer totalAmount;
+
+    /**
+     * 支付状态
+     */
+    private Integer status;
+
+    /**
+     * 支付时间
+     */
+    private Date gmtPayment;
 }
